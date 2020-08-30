@@ -1,0 +1,26 @@
+---
+ - hosts: all
+   tasks:
+    - name: replace-1
+      replace: 
+        path: /opt/finance/blog.txt
+        regexp: 'xFusionCorp'
+        replace: "Nautilus"
+      when: ansible_host == "172.16.238.10"
+      become: true
+
+    - name: replace-2
+      replace:
+        path: /opt/finance/story.txt
+        regexp: 'Nautilus'
+        replace: "KodeKloud"
+      when: ansible_host == "172.16.238.11"
+      become: true
+
+    - name: replace-3
+      replace:
+        path: /opt/finance/media.txt
+        regexp: 'KodeKloud'
+        replace: "xFusionCorp Industries"
+      when: ansible_host == "172.16.238.12"
+      become: true
